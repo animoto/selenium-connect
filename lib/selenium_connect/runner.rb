@@ -5,6 +5,7 @@ require 'selenium_connect/runners/ie'
 require 'selenium_connect/runners/chrome'
 require 'selenium_connect/runners/phantomjs'
 require 'selenium_connect/runners/no_browser'
+require 'selenium_connect/runners/ios'
 require 'selenium_connect/runners/saucelabs'
 require 'selenium_connect/runners/android'
 
