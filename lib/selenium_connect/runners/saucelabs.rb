@@ -29,7 +29,7 @@ class SeleniumConnect
         get_credentials
         # TODO: clean this up and pull it to the config... and clean up that config
         config_hash = config.sauce_opts.marshal_dump
-        config_hash['selenium-version'] = config_hash[:selenium_version]
+        config_hash['selenium-version'] = config_hash[:selenium_version] if config_hash[:selenium_version].nil? == false
         config_hash.delete :selenium_version
         Sauce::Selenium2.new(config_hash)
       end

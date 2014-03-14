@@ -33,7 +33,6 @@ class SeleniumConnect
 
       # extracted from the earlier main finish
       begin
-        save_html
         if opts.key?(:failshot) && opts[:failshot] && @config.host != 'saucelabs'
           save_screenshot
         end
