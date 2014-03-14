@@ -5,7 +5,9 @@ require 'selenium_connect/runners/ie'
 require 'selenium_connect/runners/chrome'
 require 'selenium_connect/runners/phantomjs'
 require 'selenium_connect/runners/no_browser'
+require 'selenium_connect/runners/ios'
 require 'selenium_connect/runners/saucelabs'
+require 'selenium_connect/runners/android'
 
 # selenium connect
 class SeleniumConnect
@@ -47,7 +49,9 @@ class SeleniumConnect
       chrome      = Chrome.new(config)
       phantomjs   = PhantomJS.new(config)
       no_browser  = NoBrowser.new(config)
-      [firefox, ie, chrome, phantomjs, no_browser]
+      iOS         = IOS.new(config)
+      android     = Android.new(config)
+      [firefox, ie, chrome, phantomjs, iOS, android, no_browser]
     end
 
   end # Runner

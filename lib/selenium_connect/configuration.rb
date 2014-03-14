@@ -19,13 +19,15 @@ class SeleniumConnect
     attr_accessor :sauce_username, :sauce_api_key, :api_timeout
 
     attr_reader :sauce_opts, :browser, :description, :os, :browser_version
+    
+    # Appium
+    attr_accessor :app, :device, :newCommandTimeout, :autoAcceptAlerts, :keepKeyChains
 
     def initialize(opts = {})
       @host     = 'localhost'
       @port     = 4444
       @browser  = 'firefox'
       @sauce_opts = OpenStruct.new
-      @sauce_opts.selenium_version = '2.32.0'
       populate_with_hash opts unless opts.empty?
     end
 
