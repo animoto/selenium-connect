@@ -30,6 +30,6 @@ class SeleniumConnect
         capabilities
       end
 
-    end # InternetExplorer
+    end # iOS
   end # Runner
 end # SeleniumConnect
