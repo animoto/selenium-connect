@@ -49,6 +49,7 @@ class SeleniumConnect
       chrome      = Chrome.new(config)
       phantomjs   = PhantomJS.new(config)
       no_browser  = NoBrowser.new(config)
+      iOS         = IOS.new(config)
       android     = Android.new(config)
       [firefox, ie, chrome, phantomjs, iOS, android, no_browser]
     end
