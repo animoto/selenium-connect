@@ -24,3 +24,5 @@ tmp
 _yardoc
 doc/
 build
+
+.DS_Store
