@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>=1.9'
 
-  s.add_dependency 'selenium-webdriver'
+  s.add_dependency 'selenium-webdriver', '~> 2.41'
   s.add_dependency 'rake'
   s.add_dependency 'sauce', '~> 2.4.4'
   s.add_dependency 'sauce_whisk', '~> 0.0.8'

@@ -23,6 +23,9 @@ class SeleniumConnect
     # Appium
     attr_accessor :app, :device, :newCommandTimeout, :autoAcceptAlerts, :keepKeyChains
 
+    # TestDroid
+    attr_accessor :testdroid_username, :testdroid_password, :testdroid_project, :testdroid_description, :testdroid_testrun, :testdroid_app, :testdroid_device
+
     def initialize(opts = {})
       @host     = 'localhost'
       @port     = 4444
