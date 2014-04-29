@@ -8,6 +8,7 @@ require 'selenium_connect/runners/no_browser'
 require 'selenium_connect/runners/ios'
 require 'selenium_connect/runners/saucelabs'
 require 'selenium_connect/runners/android'
+require 'selenium_connect/runners/testdroid'
 
 # selenium connect
 class SeleniumConnect
@@ -23,13 +24,18 @@ class SeleniumConnect
     private
 
     def set_server_url
-      "http://#{config.host}:#{config.port}/wd/hub"
+      if config.port.nil?
+        "http://#{config.host}/wd/hub"
+      else
+        "http://#{config.host}:#{config.port}/wd/hub"
+      end
     end
 
     def init_driver
       if config.host == 'saucelabs'
-        Saucelabs.new(config).launch
+        Saucelabs.new(config).launch        
       else
+        config.port = nil if config.browser == 'testdroid'
         Selenium::WebDriver.for(
           :remote,
           url: set_server_url,
@@ -51,7 +57,8 @@ class SeleniumConnect
       no_browser  = NoBrowser.new(config)
       iOS         = IOS.new(config)
       android     = Android.new(config)
-      [firefox, ie, chrome, phantomjs, iOS, android, no_browser]
+      testdroid   = TestDroid.new(config)
+      [firefox, ie, chrome, phantomjs, iOS, android, testdroid, no_browser]
     end
 
   end # Runner
