@@ -21,7 +21,7 @@ class SeleniumConnect
     attr_reader :sauce_opts, :browser, :description, :os, :browser_version
     
     # Appium
-    attr_accessor :app, :device, :newCommandTimeout, :autoAcceptAlerts, :keepKeyChains
+    attr_accessor :app, :device, :newCommandTimeout, :autoAcceptAlerts, :keepKeyChains, :appium_version, :platformName, :platformVersion, :deviceName, :caps
 
     # TestDroid
     attr_accessor :testdroid_username, :testdroid_password, :testdroid_project, :testdroid_description, :testdroid_testrun, :testdroid_app, :testdroid_device

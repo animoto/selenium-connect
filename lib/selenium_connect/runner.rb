@@ -9,6 +9,7 @@ require 'selenium_connect/runners/ios'
 require 'selenium_connect/runners/saucelabs'
 require 'selenium_connect/runners/android'
 require 'selenium_connect/runners/testdroid'
+require 'selenium_connect/runners/appium_lib'
 
 # selenium connect
 class SeleniumConnect
@@ -33,7 +34,9 @@ class SeleniumConnect
 
     def init_driver
       if config.host == 'saucelabs'
-        Saucelabs.new(config).launch        
+        Saucelabs.new(config).launch
+      elsif config.host == 'appium'
+        AppiumLib.new(config).launch    
       else
         config.port = nil if config.browser == 'testdroid'
         Selenium::WebDriver.for(
