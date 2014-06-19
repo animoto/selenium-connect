@@ -39,6 +39,13 @@ module Sauce
       end
     end
 
+    def fetch_video
+      requires_job_id
+      polling_api_request @timeout do
+        SauceWhisk::Jobs.fetch_asset @job_id, 'video.flv'
+      end
+    end
+
     def fetch_job_data
       requires_job_id
       # TODO: let's switch this over to use whisk as well
