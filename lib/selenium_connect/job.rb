@@ -70,8 +70,10 @@ class SeleniumConnect
           @sauce_facade.fail_job
           if opts.key?(:failshot) && opts[:failshot]
             screenshot = @sauce_facade.fetch_last_screenshot
-          @data[:assets][:failshot] = save_asset('failshot.png', screenshot) if screenshot
+            @data[:assets][:failshot] = save_asset('failshot.png', screenshot) if screenshot
           end
+          video_file = @sauce_facade.fetch_video
+          @data[:assets][:video] = save_asset('video.flv', video_file) if video_file
         end
         if opts.key?(:passed) && opts[:passed]
           status = 'passed'
@@ -79,9 +81,6 @@ class SeleniumConnect
         end
         server_log = @sauce_facade.fetch_server_log
         @data[:assets][:server_log] = save_asset('server.log', server_log) if server_log
-
-        video_file = @sauce_facade.fetch_video
-        @data[:assets][:video] = save_asset('video.flv', video_file) if video_file
 
         job_data = @sauce_facade.fetch_job_data
         @data[:sauce_data] = job_data if job_data
