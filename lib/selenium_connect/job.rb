@@ -94,7 +94,7 @@ class SeleniumConnect
       def save_asset(filename, asset)
         if @config.log
           asset_file = File.join(Dir.getwd, @config.log, filename)
-          File.open(asset_file, 'w') { |f| f.write asset }
+          File.open(asset_file, 'wb') { |f| f.write asset }
           filename
         end
       end
