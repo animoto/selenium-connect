@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'selenium-webdriver', '~> 2.41'
   s.add_dependency 'rake'
-  s.add_dependency 'sauce', '~> 2.4.4'
-  s.add_dependency 'sauce_whisk', '~> 0.0.8'
-  s.add_dependency 'appium_lib', '~>4.1.0'
+  s.add_dependency 'sauce'
+  s.add_dependency 'sauce_whisk'
+  s.add_dependency 'appium_lib'
 end
