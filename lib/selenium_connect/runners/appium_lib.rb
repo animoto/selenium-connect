@@ -41,7 +41,7 @@ class SeleniumConnect
           'newCommandTimeout' => config_hash[:newCommandTimeout],
           'waitForAppScript' => config_hash[:waitForAppScript],
           'showIOSLog' => config_hash[:showIOSLog],
-          'safariIgnoreFraudWarning ' => config_hash[:safariIgnoreFraudWarning]
+          'safariIgnoreFraudWarning' => config_hash[:safariIgnoreFraudWarning]
           }
         }
         Appium::Driver.new(capabilities).start_driver
