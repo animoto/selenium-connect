@@ -44,6 +44,7 @@ class SeleniumConnect
           'safariIgnoreFraudWarning' => config_hash[:safariIgnoreFraudWarning]
           }
         }
+        puts capabilities
         Appium::Driver.new(capabilities).start_driver
       end
 
