@@ -44,8 +44,13 @@ class SeleniumConnect
           'safariIgnoreFraudWarning' => config_hash[:safariIgnoreFraudWarning]
           }
         }
-        puts capabilities
-        Appium::Driver.new(capabilities).start_driver
+        # hooks for diagnosing flakiness
+        driver = Appium::Driver.new(capabilities)
+        x = driver.start_driver
+        puts config_hash[:job_name]
+        puts driver.server_url
+        puts driver.appium_server_version
+        x
       end
 
     end # Saucelabs
