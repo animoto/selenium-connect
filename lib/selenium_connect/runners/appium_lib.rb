@@ -45,9 +45,10 @@ class SeleniumConnect
           }
         }
         # hooks for diagnosing flakiness
+        puts config_hash[:job_name]
+        puts capabilities
         driver = Appium::Driver.new(capabilities)
         x = driver.start_driver
-        puts config_hash[:job_name]
         puts driver.server_url
         puts driver.appium_server_version
         x
