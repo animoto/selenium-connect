@@ -38,7 +38,10 @@ class SeleniumConnect
           'name' => config_hash[:job_name],
           'appium-version' => config_hash[:appium_version],
           'autoAcceptAlerts' => config_hash[:autoAcceptAlerts],
-          'newCommandTimeout' => config_hash[:newCommandTimeout]
+          'newCommandTimeout' => config_hash[:newCommandTimeout],
+          'waitForAppScript' => config_hash[:waitForAppScript],
+          'showIOSLog' => config_hash[:showIOSLog],
+          'safariIgnoreFraudWarning' => config_hash[:safariIgnoreFraudWarning]
           }
         }
         Appium::Driver.new(capabilities).start_driver
