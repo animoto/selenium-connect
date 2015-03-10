@@ -16,8 +16,6 @@ class SeleniumConnect
       end
 
       def launch
-        puts config.applitools_opts
-        #config_hash = config.applitools_opts.marshal_dump
         selenium_connect_hash = config.sauce_opts.marshal_dump
 
         eyes = Applitools::Eyes.new
