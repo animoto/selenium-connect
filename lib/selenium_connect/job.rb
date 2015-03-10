@@ -6,6 +6,9 @@ require 'rest_client'
 require 'selenium-webdriver'
 require 'json'
 require 'sauce_whisk'
+
+require 'eyes_selenium'
+
 # selenium connect
 class SeleniumConnect
   # encapsulates the creation of a driver and a run
@@ -37,6 +40,7 @@ class SeleniumConnect
           save_screenshot
         end
         @driver.quit
+        @driver.eyes.abort_if_not_closed if @driver.is_a? Applitools::Driver
         @data = { assets: {} }
         process_sauce_logs(opts) if @config.host == 'saucelabs' || @config.host == 'appium'
       # rubocop:disable HandleExceptions
