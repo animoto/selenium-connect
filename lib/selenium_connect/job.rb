@@ -50,7 +50,7 @@ class SeleniumConnect
 
       def save_screenshot
         path = File.join(Dir.getwd, @config.log, 'failshot.png')
-        @driver.save_screenshot path
+        @driver.save_screenshot path unless @driver.is_a? Applitools::Driver
       end
 
       def save_html

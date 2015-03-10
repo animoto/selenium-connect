@@ -10,6 +10,7 @@ require 'selenium_connect/runners/saucelabs'
 require 'selenium_connect/runners/android'
 require 'selenium_connect/runners/testdroid'
 require 'selenium_connect/runners/appium_lib'
+require 'selenium_connect/runners/applitools'
 
 # selenium connect
 class SeleniumConnect
@@ -31,20 +32,25 @@ class SeleniumConnect
         "http://#{config.host}:#{config.port}/wd/hub"
       end
     end
+    driver = nil
 
     def init_driver
       if config.host == 'saucelabs'
-        Saucelabs.new(config).launch
+        driver = Saucelabs.new(config).launch
       elsif config.host == 'appium'
-        AppiumLib.new(config).launch    
+        driver = AppiumLib.new(config).launch    
       else
         config.port = nil if config.browser == 'testdroid'
-        Selenium::WebDriver.for(
+        driver = Selenium::WebDriver.for(
           :remote,
           url: set_server_url,
           desired_capabilities: get_browser
         )
       end
+      if config.applitools_opts != nil
+        driver = AppliTools.new(config, driver).launch
+      end
+      driver
     end
 
     def get_browser
