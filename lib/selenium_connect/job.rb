@@ -76,8 +76,10 @@ class SeleniumConnect
             screenshot = @sauce_facade.fetch_last_screenshot
             @data[:assets][:failshot] = save_asset('failshot.png', screenshot) if screenshot
           end
-          video_file = @sauce_facade.fetch_video
-          @data[:assets][:video] = save_asset('video.flv', video_file) if video_file
+          if (@config.sauce_opts.download_videos)
+            video_file = @sauce_facade.fetch_video
+            @data[:assets][:video] = save_asset('video.flv', video_file) if video_file
+          end
         end
         if opts.key?(:passed) && opts[:passed]
           status = 'passed'
