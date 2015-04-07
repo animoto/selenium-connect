@@ -67,6 +67,7 @@ class SeleniumConnect
       end
 
       def process_sauce_logs(opts = {})
+        return if @driver.is_a? Applitools::Driver
         job_id = @driver.session_id
         @sauce_facade.job_id = job_id
         if opts.key?(:failed) && opts[:failed]
