@@ -20,8 +20,17 @@ class SeleniumConnect
 
         eyes = Applitools::Eyes.new
         eyes.api_key = config.applitools_opts[:applitools_key]
+        app_name = if selenium_connect_hash.include?(:device)
+                     'mobile' + selenium_connect_hash[:device]
+                   else
+                     'web' + selenium_connect_hash[:browser] + selenium_connect_hash[:browser_version]
+		   end
 
-        eyes.open(app_name: selenium_connect_hash[:device], test_name: selenium_connect_hash[:job_name], driver: driver)
+        if driver.is_a? Sauce::Selenium2
+          @driver = driver.driver #yo dawg. I heard you like drivers.
+        end	
+
+        eyes.open(app_name: app_name, test_name: selenium_connect_hash[:job_name], driver: driver)
       end
 
     end # AppliTools
