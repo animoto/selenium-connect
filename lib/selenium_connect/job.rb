@@ -40,10 +40,11 @@ class SeleniumConnect
           save_screenshot
         end
         @driver.quit
-	if @driver.is_a? Applitools::Driver
-	  @driver.eyes.close
-          @driver.eyes.abort_if_not_closed         @data = { assets: {} }
-	end
+	      if @driver.is_a? Applitools::Driver
+	        @driver.eyes.close
+          @driver.eyes.abort_if_not_closed
+	      end
+        @data = { assets: {} }
         process_sauce_logs(opts) if @config.host == 'saucelabs' || @config.host == 'appium'
       # rubocop:disable HandleExceptions
       rescue Selenium::WebDriver::Error::WebDriverError
