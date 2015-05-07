@@ -1,3 +1,14 @@
+#3.7.1 (2014-04-13)
+Updated Selenium gems and binaries so they are current
+
+- Bumped version to 3.7.1 to prepare for release.
+- Side-stepping quality checks for now -- too many to sort out today. Will revisit next go-round
+- Updated a the jar reference
+- Updated dotfiles
+- Updated chromedriver and phantomjs
+- Updated selenium standalone server jar
+- Added .DS_Store files to gitignore
+
 #3.7.0 (2013-08-26)
 Can now pass run time sauce options to a job and will capture all open window doms
 
