@@ -17,6 +17,8 @@ class SeleniumConnect
 
       def launch
         selenium_connect_hash = config.sauce_opts.marshal_dump
+        eyes                  = Applitools::Eyes.new
+
         if selenium_connect_hash.include?(:device)
           test_name = 'mobile' + selenium_connect_hash[:device]
         else
@@ -26,7 +28,7 @@ class SeleniumConnect
           eyes.host_app    = nil
           eyes.host_os     = nil
         end
-        eyes         = Applitools::Eyes.new
+
         eyes.api_key = config.applitools_opts[:applitools_key]
 
 
