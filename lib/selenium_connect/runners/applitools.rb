@@ -24,7 +24,7 @@ class SeleniumConnect
         else
           test_name        = 'web' # + selenium_connect_hash[:browser] + selenium_connect_hash[:browser_version]
           eyes.match_level = Applitools::MatchLevel::LAYOUT
-          viewport_size    = Struct.new(:width, :height).new(1024, 768)
+          viewport_size    = Struct.new(:width, :height).new(1024, 724)
           eyes.host_app    = nil
           eyes.host_os     = nil
         end
