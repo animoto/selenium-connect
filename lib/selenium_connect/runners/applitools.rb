@@ -17,7 +17,10 @@ class SeleniumConnect
 
       def launch
         selenium_connect_hash = config.sauce_opts.marshal_dump
-
+        eyes.match_level = Applitools::MatchLevel::LAYOUT
+        viewport_size = Struct.new(:width, :height).new(1024, 768)
+        eyes.host_app = nil
+        eyes.host_os = nil
         eyes = Applitools::Eyes.new
         eyes.api_key = config.applitools_opts[:applitools_key]
         test_name = if selenium_connect_hash.include?(:device)
@@ -30,7 +33,7 @@ class SeleniumConnect
           @driver = driver.driver #yo dawg. I heard you like drivers.
         end
 
-        eyes.open(app_name: selenium_connect_hash[:job_name], test_name: test_name, driver: driver)
+        eyes.open(app_name: selenium_connect_hash[:job_name], test_name: test_name, driver: driver, viewport_size: viewport_size)
       end
 
     end # AppliTools
