@@ -17,17 +17,18 @@ class SeleniumConnect
 
       def launch
         selenium_connect_hash = config.sauce_opts.marshal_dump
-        eyes.match_level = Applitools::MatchLevel::LAYOUT
-        viewport_size = Struct.new(:width, :height).new(1024, 768)
-        eyes.host_app = nil
-        eyes.host_os = nil
-        eyes = Applitools::Eyes.new
+        if selenium_connect_hash.include?(:device)
+          test_name = 'mobile' + selenium_connect_hash[:device]
+        else
+          test_name        = 'web' # + selenium_connect_hash[:browser] + selenium_connect_hash[:browser_version]
+          eyes.match_level = Applitools::MatchLevel::LAYOUT
+          viewport_size    = Struct.new(:width, :height).new(1024, 768)
+          eyes.host_app    = nil
+          eyes.host_os     = nil
+        end
+        eyes         = Applitools::Eyes.new
         eyes.api_key = config.applitools_opts[:applitools_key]
-        test_name = if selenium_connect_hash.include?(:device)
-                     'mobile' + selenium_connect_hash[:device]
-                   else
-                     'web' + selenium_connect_hash[:browser] + selenium_connect_hash[:browser_version]
-		   end
+
 
         if driver.is_a? Sauce::Selenium2
           @driver = driver.driver #yo dawg. I heard you like drivers.
