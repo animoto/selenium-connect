@@ -36,7 +36,7 @@ class SeleniumConnect
           @driver = driver.driver #yo dawg. I heard you like drivers.
         end
 
-        eyes.open(app_name: selenium_connect_hash[:job_name], test_name: test_name, driver: driver, viewport_size: viewport_size)
+        #eyes.open(app_name: selenium_connect_hash[:job_name], test_name: test_name, driver: driver, viewport_size: viewport_size)
       end
 
     end # AppliTools

@@ -41,7 +41,7 @@ class SeleniumConnect
         end
         @driver.quit
 	      if @driver.is_a? Applitools::Driver
-	        @driver.eyes.close
+	        #@driver.eyes.close
           @driver.eyes.abort_if_not_closed
 	      end
         @data = { assets: {} }
