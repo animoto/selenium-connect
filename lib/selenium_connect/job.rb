@@ -28,6 +28,7 @@ class SeleniumConnect
       sauce_config.merge!(opts[:sauce_opts]) if opts.key? :sauce_opts
       sauce_config.merge!(job_name: @job_name)
       @config.sauce_opts = sauce_config
+      @config.browserstack_opts[:name] = @job_name if @config.browserstack_opts != nil
       @driver = Runner.new(@config).driver
     end
 

@@ -11,6 +11,7 @@ require 'selenium_connect/runners/android'
 require 'selenium_connect/runners/testdroid'
 require 'selenium_connect/runners/appium_lib'
 require 'selenium_connect/runners/applitools'
+require 'selenium_connect/runners/browserstack'
 
 # selenium connect
 class SeleniumConnect
@@ -38,7 +39,9 @@ class SeleniumConnect
       if config.host == 'saucelabs'
         driver = Saucelabs.new(config).launch
       elsif config.host == 'appium'
-        driver = AppiumLib.new(config).launch    
+        driver = AppiumLib.new(config).launch
+      elsif config.host == 'browserstack'
+        driver = BrowserStack.new(config).launch    
       else
         config.port = nil if config.browser == 'testdroid'
         driver = Selenium::WebDriver.for(
