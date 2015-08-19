@@ -49,9 +49,6 @@ class SeleniumConnect
           desired_capabilities: get_browser
         )
       end
-      if config.applitools_opts != nil
-        driver = AppliTools.new(config, driver).launch
-      end
       driver
     end
 
