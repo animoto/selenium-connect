@@ -10,7 +10,6 @@ require 'selenium_connect/runners/saucelabs'
 require 'selenium_connect/runners/android'
 require 'selenium_connect/runners/testdroid'
 require 'selenium_connect/runners/appium_lib'
-require 'selenium_connect/runners/applitools'
 require 'selenium_connect/runners/browserstack'
 
 # selenium connect

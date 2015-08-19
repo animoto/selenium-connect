@@ -31,9 +31,6 @@ class SeleniumConnect
     # TestDroid
     attr_accessor :testdroid_username, :testdroid_password, :testdroid_project, :testdroid_description, :testdroid_testrun, :testdroid_app, :testdroid_device
 
-    # AppliTools
-    attr_accessor :applitools_opts, :applitools_key
-
     def initialize(opts = {})
       @host     = 'localhost'
       @port     = 4444
