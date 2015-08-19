@@ -41,10 +41,6 @@ class SeleniumConnect
           save_screenshot
         end
         @driver.quit
-	      if @driver.is_a? Applitools::Eyes
-	        @driver.eyes.close
-          @driver.eyes.abort_if_not_closed
-	      end
         @data = { assets: {} }
         process_sauce_logs(opts) if @config.host == 'saucelabs' || @config.host == 'appium'
       # rubocop:disable HandleExceptions
@@ -58,7 +54,6 @@ class SeleniumConnect
 
       def save_screenshot
         path = File.join(Dir.getwd, @config.log, 'failshot.png')
-        @driver.save_screenshot path unless @driver.is_a? Applitools::Eyes
       end
 
       def save_html
@@ -71,7 +66,6 @@ class SeleniumConnect
       end
 
       def process_sauce_logs(opts = {})
-        return if @driver.is_a? Applitools::Eyes
         job_id = @driver.session_id
         @sauce_facade.job_id = job_id
         if opts.key?(:failed) && opts[:failed]
