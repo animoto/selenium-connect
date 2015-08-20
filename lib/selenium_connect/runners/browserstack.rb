@@ -22,6 +22,7 @@ class SeleniumConnect
 
       def init_browser
         config.browserstack_opts[:'browserstack.debug'] = 'true'
+        config.browserstack_opts[:'browserstack.video'] = 'true'
         driver = Selenium::WebDriver.for(
           :remote,
           url: "http://#{config.browserstack_username}:#{config.browserstack_api_key}@hub.browserstack.com/wd/hub",
