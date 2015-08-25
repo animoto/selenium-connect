@@ -39,6 +39,8 @@ class SeleniumConnect
           'appium-version' => config_hash[:appium_version],
           'autoAcceptAlerts' => config_hash[:autoAcceptAlerts],
           'newCommandTimeout' => config_hash[:newCommandTimeout],
+          'idleTimeout' => config_hash[:idleTimeout],
+          'maxDuration' => config_hash[:maxDuration],
           'waitForAppScript' => config_hash[:waitForAppScript],
           'showIOSLog' => config_hash[:showIOSLog],
           'safariIgnoreFraudWarning' => config_hash[:safariIgnoreFraudWarning],
