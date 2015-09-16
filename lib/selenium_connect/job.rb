@@ -50,6 +50,13 @@ class SeleniumConnect
       @report_factory.build :job, @data
     end
 
+    def get_evidence_folder
+      if @config.log
+        asset_file = File.join(Dir.getwd, @config.log)
+      end
+      asset_file
+    end
+
     private
 
       def save_screenshot
