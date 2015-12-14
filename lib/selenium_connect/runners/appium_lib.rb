@@ -43,6 +43,7 @@ class SeleniumConnect
           'maxDuration' => config_hash[:maxDuration],
           'waitForAppScript' => config_hash[:waitForAppScript],
           'showIOSLog' => config_hash[:showIOSLog],
+          'nativeInstrumentsLib' => config_hash[:nativeInstrumentsLib],
           'safariIgnoreFraudWarning' => config_hash[:safariIgnoreFraudWarning],
           'androidPackage' => config_hash[:androidPackage]
           }
