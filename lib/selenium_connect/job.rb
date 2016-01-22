@@ -40,12 +40,13 @@ class SeleniumConnect
         if opts.key?(:failshot) && opts[:failshot] && @config.host != 'saucelabs' || @config.host == 'appium'
           save_screenshot
         end
+      # rubocop:disable HandleExceptions      
+      rescue Selenium::WebDriver::Error::WebDriverError
+      # rubocop:enable HandleExceptions
+      ensure
         @driver.quit
         @data = { assets: {} }
         process_sauce_logs(opts) if @config.host == 'saucelabs' || @config.host == 'appium'
-      # rubocop:disable HandleExceptions
-      rescue Selenium::WebDriver::Error::WebDriverError
-      # rubocop:enable HandleExceptions
       end
       @report_factory.build :job, @data
     end
