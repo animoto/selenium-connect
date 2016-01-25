@@ -44,6 +44,7 @@ class SeleniumConnect
       rescue Selenium::WebDriver::Error::WebDriverError
       # rubocop:enable HandleExceptions
       ensure
+        puts "QUIT DRIVER"
         @driver.quit
         @data = { assets: {} }
         process_sauce_logs(opts) if @config.host == 'saucelabs' || @config.host == 'appium'
