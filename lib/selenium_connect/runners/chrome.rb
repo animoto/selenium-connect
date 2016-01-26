@@ -30,7 +30,7 @@ class SeleniumConnect
         end
 
         # Add the flag to bypass the media stream infobar by selecting the default device for media streams 
-        caps['chromeOptions'] = {"args" => [ "--use-fake-ui-for-media-stream" ]}
+        caps['chromeOptions'] = {"args" => [ "--use-fake-ui-for-media-stream", "--disable-extensions", "--disable-notifications" ]}
 
         caps
       end
