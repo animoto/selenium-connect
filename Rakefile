@@ -11,7 +11,8 @@ task default: :build
 task build: [:clean, :prepare, :quality, :unit, :integration]
 
 desc 'Runs standard build activities.'
-task build_full: [:clean, :prepare, :quality, :unit, :integration, :system]
+#task build_full: [:clean, :prepare, :quality, :unit, :integration, :system]
+task build_full: [:clean, :prepare, :unit, :integration, :system]
 
 desc 'Runs quality checks.'
 task quality: [:rubocop, :reek, :flog_total, :flog_average, :flay]

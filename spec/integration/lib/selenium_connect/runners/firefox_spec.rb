@@ -33,7 +33,7 @@ describe 'Firefox', selenium: true do
   it 'local jar file specified' do
     opts = {
       host: 'localhost',
-      jar: "#{Dir.pwd}/bin/selenium-server-standalone-2.35.0.jar"
+      jar: "#{Dir.pwd}/bin/selenium-server-standalone-2.41.0.jar"
     }
     @config = SeleniumConnect::Configuration.new opts
     sc = SeleniumConnect.start @config

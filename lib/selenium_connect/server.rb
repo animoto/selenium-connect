@@ -33,7 +33,7 @@ class SeleniumConnect
           if configuration.jar
             file.puts "t.jar = '#{configuration.jar}'"
           else
-            file.puts "t.jar = '#{current_dir_path + '/../../bin/selenium-server-standalone-2.35.0.jar'}'"
+            file.puts "t.jar = '#{current_dir_path + '/../../bin/selenium-server-standalone-2.41.0.jar'}'"
           end
           file.puts 't.background'
           if configuration.log
