@@ -36,7 +36,7 @@ class SeleniumConnect
           'platformName' => config_hash[:platformName],
           'platformVersion' => config_hash[:platformVersion],
           'name' => config_hash[:job_name],
-          'appium-version' => config_hash[:appium_version],
+          'appiumVersion' => config_hash[:appiumVersion],
           'autoAcceptAlerts' => config_hash[:autoAcceptAlerts],
           'newCommandTimeout' => config_hash[:newCommandTimeout],
           'idleTimeout' => config_hash[:idleTimeout],
