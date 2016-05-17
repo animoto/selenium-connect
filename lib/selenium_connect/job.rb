@@ -7,8 +7,6 @@ require 'selenium-webdriver'
 require 'json'
 require 'sauce_whisk'
 
-require 'eyes_selenium'
-
 # selenium connect
 class SeleniumConnect
   # encapsulates the creation of a driver and a run
