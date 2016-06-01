@@ -28,13 +28,15 @@ class SeleniumConnect
         get_credentials
         config_hash = config.sauce_opts.marshal_dump
         config_hash['browserName'] = config_hash[:browser]
-        config_hash['platform'] = config_hash[:os]        
+        config_hash['platform'] = config_hash[:os]
+        config_hash['version'] = config_hash[:browser_version]
         config_hash['selenium-version'] = config_hash[:selenium_version] if config_hash[:selenium_version].nil? == false
         config_hash['screen-resolution'] = config_hash[:screen_resolution] if config_hash[:screen_resolution].nil? == false
         config_hash.delete :selenium_version
         config_hash.delete :browser        
         config_hash.delete :screen_resolution
-        config_hash.delete :os        
+        config_hash.delete :os
+        config_hash.delete :browser_version
         Selenium::WebDriver.for(:remote,
           :url => "http://#{config.sauce_username}:#{config.sauce_api_key}@ondemand.saucelabs.com:80/wd/hub",
           :desired_capabilities => config_hash)
