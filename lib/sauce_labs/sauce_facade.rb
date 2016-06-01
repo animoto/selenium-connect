@@ -3,9 +3,8 @@
 require 'json'
 require 'sauce_whisk'
 require 'rest_client'
-require 'sauce/client'
 
-module Sauce
+module SauceLabs
 # wrapps the sauce whick api accessor with sane error handling
   class SauceFacade
 
@@ -48,10 +47,8 @@ module Sauce
 
     def fetch_job_data
       requires_job_id
-      # TODO: let's switch this over to use whisk as well
-      # This is used because it's easy to get all the data out of the job
       begin
-        job = Sauce::Job.find @job_id
+        job = SauceWhisk::Jobs.fetch @job_id
         JSON.parse job.to_json
       rescue StandardError => exception
         puts "An error occured while fetching the job data: #{exception.message}"

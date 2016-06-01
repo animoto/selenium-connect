@@ -1,7 +1,5 @@
 # Encoding: utf-8
 
-require 'sauce'
-
 # selenium connect
 class SeleniumConnect
   # Runner
@@ -26,14 +24,20 @@ class SeleniumConnect
       end
 
       def init_browser
-        get_credentials
         # TODO: clean this up and pull it to the config... and clean up that config
+        get_credentials
         config_hash = config.sauce_opts.marshal_dump
+        config_hash['browserName'] = config_hash[:browser]
+        config_hash['platform'] = config_hash[:os]        
         config_hash['selenium-version'] = config_hash[:selenium_version] if config_hash[:selenium_version].nil? == false
         config_hash['screen-resolution'] = config_hash[:screen_resolution] if config_hash[:screen_resolution].nil? == false
         config_hash.delete :selenium_version
+        config_hash.delete :browser        
         config_hash.delete :screen_resolution
-        Sauce::Selenium2.new(config_hash)
+        config_hash.delete :os        
+        Selenium::WebDriver.for(:remote,
+          :url => "http://#{config.sauce_username}:#{config.sauce_api_key}@ondemand.saucelabs.com:80/wd/hub",
+          :desired_capabilities => config_hash)
       end
 
     end # Saucelabs

@@ -1,7 +1,5 @@
 # Encoding: utf-8
 
-require 'sauce'
-
 # selenium connect
 class SeleniumConnect
   # Runner

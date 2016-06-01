@@ -1,7 +1,6 @@
 # Encoding: utf-8
 
 require 'selenium_connect/runner'
-require 'sauce/client'
 require 'rest_client'
 require 'selenium-webdriver'
 require 'json'

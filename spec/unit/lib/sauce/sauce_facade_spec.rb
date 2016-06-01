@@ -1,7 +1,7 @@
 # Encoding: utf-8
 
 require 'spec_helper'
-require 'sauce/sauce_facade'
+require 'sauce_labs/sauce_facade'
 
 describe Sauce::SauceFacade do
 
