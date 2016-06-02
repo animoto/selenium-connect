@@ -37,9 +37,16 @@ class SeleniumConnect
         config_hash.delete :screen_resolution
         config_hash.delete :os
         config_hash.delete :browser_version
-        Selenium::WebDriver.for(:remote,
+
+        driver = Selenium::WebDriver.for(:remote,
           :url => "http://#{config.sauce_username}:#{config.sauce_api_key}@ondemand.saucelabs.com:80/wd/hub",
           :desired_capabilities => config_hash)
+
+        driver.file_detector = lambda do |args|
+          file_path = args.first.to_s
+          File.exist?(file_path) ? file_path : false
+        end
+        driver
       end
 
     end # Saucelabs
