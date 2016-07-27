@@ -16,7 +16,7 @@ class SeleniumConnect
     attr_accessor :browser_path, :profile_path, :profile_name
 
     # SauceLabs
-    attr_accessor :sauce_username, :sauce_api_key, :api_timeout, :chromeOptions, :screen_resolution
+    attr_accessor :sauce_username, :sauce_api_key, :api_timeout, :chromeOptions, :screen_resolution, :prerun
 
     attr_reader :sauce_opts, :browser, :description, :os, :browser_version
 
