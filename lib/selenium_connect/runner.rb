@@ -3,6 +3,7 @@
 require 'selenium_connect/runners/firefox'
 require 'selenium_connect/runners/ie'
 require 'selenium_connect/runners/chrome'
+require 'selenium_connect/runners/safari'
 require 'selenium_connect/runners/phantomjs'
 require 'selenium_connect/runners/no_browser'
 require 'selenium_connect/runners/ios'
@@ -66,12 +67,13 @@ class SeleniumConnect
       firefox     = Firefox.new(config)
       ie          = InternetExplorer.new(config)
       chrome      = Chrome.new(config)
+      safari      = Safari.new(config)
       phantomjs   = PhantomJS.new(config)
       no_browser  = NoBrowser.new(config)
       iOS         = IOS.new(config)
       android     = Android.new(config)
       testdroid   = TestDroid.new(config)
-      [firefox, ie, chrome, phantomjs, iOS, android, testdroid, no_browser]
+      [firefox, ie, chrome, safari, phantomjs, iOS, android, testdroid, no_browser]
     end
 
   end # Runner
