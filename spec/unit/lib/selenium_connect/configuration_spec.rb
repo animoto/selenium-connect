@@ -52,10 +52,6 @@ describe SeleniumConnect::Configuration do
     @configuration.sauce_opts.capture_html.should be_true
   end
 
-  it 'should use selenium version 2.32.0 version by default for sauce' do
-    @configuration.sauce_opts.selenium_version.should eq '2.32.0'
-  end
-
   # the goal here is to allow internal refactoring to use the new configuration pattern
   # to support deprecating the top level configs later
   it 'should merge the explicitly configured sauce options into the strut' do

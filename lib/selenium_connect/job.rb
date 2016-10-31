@@ -60,6 +60,7 @@ class SeleniumConnect
 
       def save_screenshot
         path = File.join(Dir.getwd, @config.log, 'failshot.png')
+        @driver.save_screenshot(path)
       end
 
       def save_html

@@ -24,7 +24,7 @@ class SeleniumConnect
     attr_accessor :browserstack_username, :browserstack_api_key, :browserstack_opts
 
     attr_reader :os_version, :resolution
-    
+
     # Appium
     attr_accessor :app, :device, :newCommandTimeout, :autoAcceptAlerts, :keepKeyChains, :appium_version, :platformName, :platformVersion, :deviceName, :caps
 

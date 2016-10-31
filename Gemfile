@@ -11,3 +11,5 @@ gem 'flog'
 gem 'flay'
 gem 'ruby2ruby'
 gem 'reek', '1.3.1'
+gem 'net-http-persistent' , '2.9.4'
+

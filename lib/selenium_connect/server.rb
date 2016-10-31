@@ -33,7 +33,7 @@ class SeleniumConnect
           if configuration.jar
             file.puts "t.jar = '#{configuration.jar}'"
           else
-            file.puts "t.jar = '#{current_dir_path + '/../../bin/selenium-server-standalone-2.41.0.jar'}'"
+            file.puts "t.jar = '#{current_dir_path + '/../../bin/selenium-server-standalone-2.53.1.jar'}'"
           end
           file.puts 't.background'
           if configuration.log
@@ -43,8 +43,8 @@ class SeleniumConnect
           end
           file.puts "t.port = #{configuration.port}"
           opts = ''
+          opts += '-Dwebdriver.chrome.driver=' + current_dir_path + '/../../bin/chromedriver'
           if configuration.browser == 'chrome'
-            opts += '-Dwebdriver.chrome.driver=' + current_dir_path + '/../../bin/chromedriver'
             if configuration.log
               opts += ' -Dwebdriver.chrome.logfile=' + File.join(Dir.getwd, configuration.log, 'chrome.log')
             end

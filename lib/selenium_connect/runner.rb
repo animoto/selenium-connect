@@ -42,11 +42,6 @@ class SeleniumConnect
         driver = AppiumLib.new(config).launch
       elsif config.host == 'browserstack'
         driver = BrowserStack.new(config).launch
-      elsif config.host == 'localhost' && config.browser == 'firefox'
-        driver = Selenium::WebDriver.for(
-          :firefox,
-          desired_capabilities: Firefox.new(config).launch
-        )
       else
         config.port = nil if config.browser == 'testdroid'
         driver = Selenium::WebDriver.for(

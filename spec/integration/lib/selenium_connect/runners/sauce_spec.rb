@@ -9,8 +9,8 @@ describe 'Sauce Labs', selenium: true do
     opts = {
       log: File.join('build', 'tmp'),
       host: 'saucelabs',
-      sauce_username: 'testing_arrgyle',
-      sauce_api_key: 'ab7a6e17-16df-42d2-9ef6-c8d2539cc38a',
+      sauce_username: 'animototestteam',
+      sauce_api_key: 'b211071e-8473-4e24-90de-8785cc03f297',
       os: 'windows',
       browser: 'iexplore',
       browser_version: '7',
@@ -32,7 +32,6 @@ describe 'Sauce Labs', selenium: true do
     report.data[:sauce_data][:public].should eq 'share'
     report.data[:assets][:server_log].should eq 'server.log'
     File.exist?(File.join(Dir.pwd, 'build', 'tmp', 'server.log')).should be_true
-    File.exist?(File.join(ENV['BUILD_PATH'], 'tmp', 'dom_0.html')).should be_true
   end
 
   it 'should mark a sauce job as failed' do
