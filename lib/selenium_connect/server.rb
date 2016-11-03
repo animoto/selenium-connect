@@ -7,7 +7,7 @@ class SeleniumConnect
     attr_reader :configuration, :current_dir_path
 
     def initialize(configuration)
-      @configuration = configuration
+      @configuration    = configuration
       @current_dir_path = File.join(File.dirname(File.expand_path(__FILE__)))
     end
 
@@ -25,39 +25,42 @@ class SeleniumConnect
 
     private
 
-      def get_rake_file
-        rake_file_path = current_dir_path + '/rake.task'
-        File.open(rake_file_path, 'w') do |file|
-          file.puts "require 'selenium/rake/server_task'"
-          file.puts 'Selenium::Rake::ServerTask.new(:server) do |t|'
-          if configuration.jar
-            file.puts "t.jar = '#{configuration.jar}'"
-          else
-            file.puts "t.jar = '#{current_dir_path + '/../../bin/selenium-server-standalone-2.53.1.jar'}'"
-          end
-          file.puts 't.background'
-          if configuration.log
-            file.puts "t.log = '#{File.join(Dir.getwd, configuration.log, 'server.log')}'"
-          else
-            file.puts 't.log = false'
-          end
-          file.puts "t.port = #{configuration.port}"
-          opts = ''
-          opts += '-Dwebdriver.chrome.driver=' + current_dir_path + '/../../bin/chromedriver'
-          if configuration.browser == 'chrome'
-            if configuration.log
-              opts += ' -Dwebdriver.chrome.logfile=' + File.join(Dir.getwd, configuration.log, 'chrome.log')
-            end
-            file.puts "t.opts = %w[#{opts}]"
-          end
-          file.puts 'end'
+    def get_rake_file
+      rake_file_path = current_dir_path + '/rake.task'
+      File.open(rake_file_path, 'w') do |file|
+        file.puts "require 'selenium/rake/server_task'"
+        file.puts 'Selenium::Rake::ServerTask.new(:server) do |t|'
+        if configuration.jar
+          file.puts "t.jar = '#{configuration.jar}'"
+        else
+          file.puts "t.jar = '#{current_dir_path + '/../../bin/selenium-server-standalone-2.53.1.jar'}'"
         end
-          rake_file_path
-      end
+        file.puts 't.background'
+        if configuration.log
+          file.puts "t.log = '#{File.join(Dir.getwd, configuration.log, 'server.log')}'"
+        else
+          file.puts 't.log = false'
+        end
+        file.puts "t.port = #{configuration.port}"
+        opts = ''
+        #chromedriver options
+        opts += '-Dwebdriver.chrome.driver=' + current_dir_path + '/../../bin/chromedriver'
+        opts += ' -Dwebdriver.chrome.logfile=' + File.join(Dir.getwd, configuration.log, 'chrome.log')
 
-    def rake(task)
-      system "rake -f #{get_rake_file} server:#{task}"
+        #geckodriver options
+        opts += ' -Dwebdriver.gecko.driver=' + current_dir_path + '/../../bin/geckodriver'
+        opts += ' -Dwebdriver.firefox.logfile=' + File.join(Dir.getwd, configuration.log, 'firefox.log')
+
+        file.puts "t.opts = %w[#{opts}]"
+      file.puts 'end'
     end
 
-  end # Server
+    rake_file_path
+  end
+
+  def rake(task)
+    system "rake -f #{get_rake_file} server:#{task}"
+  end
+
+end # Server
 end # SeleniumConnect
