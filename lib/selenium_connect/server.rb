@@ -45,11 +45,12 @@ class SeleniumConnect
         opts = ''
         #chromedriver options
         opts += '-Dwebdriver.chrome.driver=' + current_dir_path + '/../../bin/chromedriver'
-        opts += ' -Dwebdriver.chrome.logfile=' + File.join(Dir.getwd, configuration.log, 'chrome.log')
+        if configuration.log
+          opts += ' -Dwebdriver.chrome.logfile=' + File.join(Dir.getwd, configuration.log, 'chrome.log')
+        end
 
         #geckodriver options
         opts += ' -Dwebdriver.gecko.driver=' + current_dir_path + '/../../bin/geckodriver'
-        opts += ' -Dwebdriver.firefox.logfile=' + File.join(Dir.getwd, configuration.log, 'firefox.log')
 
         file.puts "t.opts = %w[#{opts}]"
       file.puts 'end'
