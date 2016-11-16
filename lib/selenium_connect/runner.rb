@@ -47,7 +47,7 @@ class SeleniumConnect
         driver = Selenium::WebDriver.for(
             :remote,
             url: set_server_url,
-            marionette: true,
+            #marionette: true,
             desired_capabilities: get_browser
         )
       else

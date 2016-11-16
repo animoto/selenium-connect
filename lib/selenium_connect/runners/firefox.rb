@@ -35,6 +35,8 @@ class SeleniumConnect
         profile = get_profile
         profile.assume_untrusted_certificate_issuer = false unless profile.nil?
         profile.log_file = File.join(Dir.getwd, config.log, 'firefox.log') if config.log
+        profile['network.negotiate-auth.trusted-uris']  = '.animoto.com'
+        profile['network.automatic-ntlm-auth.trusted-uris']  = '.animoto.com'
         browser = Selenium::WebDriver::Remote::Capabilities.firefox
         browser[:firefox_binary] = config.browser_path if config.browser_path
         browser[:firefox_profile] = profile

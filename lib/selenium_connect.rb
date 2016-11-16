@@ -1,7 +1,8 @@
 # Encoding: utf-8
 
 require 'selenium_connect/job'
-require 'selenium_connect/server'
+#require 'selenium_connect/server'\
+require 'selenium/server'
 require 'selenium_connect/configuration'
 require 'sauce/sauce_facade'
 require 'selenium_connect/report/report_factory'
@@ -19,7 +20,7 @@ class SeleniumConnect
 
   def initialize(config, report_factory)
     raise ArgumentError, 'Instance of SeleniumConnect::Configuration expected.' unless config.is_a? SeleniumConnect::Configuration
-    @config = config
+    @config         = config
     @report_factory = report_factory
     server_start
   end
@@ -37,15 +38,23 @@ class SeleniumConnect
 
   private
 
-    def server_start
-      if @config.host == 'localhost'
-        # TODO: this is just temp,
-        # in the next iteration we will inject this in by default in start
-        # to a required argument in initialize
-        @server = Server.new(config)
-        @server.start
-      else
-        @server = nil
+  def server_start
+    if @config.host == 'localhost'
+      root_path =  File.join(File.dirname(File.expand_path(__FILE__)),'..')
+      jar = File.join(root_path, 'bin','selenium-server-standalone-3.0.1.jar')
+
+      @server = Selenium::Server.new(jar,
+                                     :background => true, :timeout => 10)
+      @server << "-Dwebdriver.chrome.driver=#{File.join(root_path, 'bin','chromedriver')}"
+      @server << "-Dwebdriver.gecko.driver=#{File.join(root_path, 'bin','geckodriver')}"
+      if config.log
+        @server.log  = File.join(Dir.getwd, config.log, 'server.log')
+        @server << "-Dwebdriver.chrome.logfile=#{File.join(Dir.getwd, config.log, 'chrome.log')}"
+        @server << "-Dwebdriver.gecko.logfile=#{File.join(Dir.getwd, config.log, 'firefox.log')}"
       end
+      @server.start
+    else
+      @server = nil
     end
+  end
 end
