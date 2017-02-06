@@ -11,10 +11,10 @@ describe 'Sauce Labs', selenium: true do
       host: 'saucelabs',
       sauce_username: 'animototestteam',
       sauce_api_key: 'b211071e-8473-4e24-90de-8785cc03f297',
-      os: 'windows',
-      browser: 'iexplore',
-      browser_version: '7',
-      sauce_opts: { selenium_version: '2.32.0' },
+      os: 'windows 10',
+      browser: 'chrome',
+      browser_version: '55',
+      sauce_opts: { selenium_version: '3.0.1' },
       description: 'test description'
     }
     config = SeleniumConnect::Configuration.new opts
