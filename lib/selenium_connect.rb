@@ -1,7 +1,6 @@
 # Encoding: utf-8
 
 require 'selenium_connect/job'
-#require 'selenium_connect/server'\
 require 'selenium/server'
 require 'selenium_connect/configuration'
 require 'sauce/sauce_facade'
