@@ -35,6 +35,11 @@ class SeleniumConnect
 
       # extracted from the earlier main finish
       begin
+      if opts.key?(:failed) && @config.host == 'browserstack'
+        RestClient.put "https://animototestteam1:2LWK1xbfQCxgQHJzpwtt@www.browserstack.com/automate/sessions/#{@driver.session_id}.json",
+                       {"status"=>"failed", "reason"=>""},
+                       {:content_type => :json}
+        end
         if opts.key?(:failshot) && opts[:failshot] && @config.host != 'saucelabs' || @config.host == 'appium'
           save_screenshot
         end
