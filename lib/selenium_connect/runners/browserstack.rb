@@ -23,8 +23,7 @@ class SeleniumConnect
       def init_browser
         config.browserstack_opts[:'browserstack.debug'] = 'true'
         config.browserstack_opts[:'browserstack.video'] = 'true'
-        config.browserstack_opts[:resolution]           = '1400x900'
-        config.browserstack_opts[:'browserstack.idleTimeout'] = 300000
+        config.browserstack_opts[:resolution]           = '1920x1080'
         [:os,
          :os_version
         ].each do |attr|
