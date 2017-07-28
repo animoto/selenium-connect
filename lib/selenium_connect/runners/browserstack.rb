@@ -25,6 +25,7 @@ class SeleniumConnect
         config.browserstack_opts[:'browserstack.video'] = 'true'
         config.browserstack_opts[:resolution]           = '1920x1080'
         config.browserstack_opts[:'browserstack.idleTimeout'] = 300000
+        config.browserstack_opts[:project] = 'TSW'
         [:os,
          :os_version
         ].each do |attr|
