@@ -28,6 +28,10 @@ class SeleniumConnect
         config.browserstack_opts[:project] = 'TSW'
         config.browserstack_opts[:'browserstack.selenium_version'] = '3.0.1'
 
+        if config.browserstack_opts[:tunnel]
+          config.browserstack_opts[:'browserstack.local'] = true
+        end
+
         [:os,
          :os_version
         ].each do |attr|
