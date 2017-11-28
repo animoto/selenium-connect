@@ -1,6 +1,8 @@
-#selenium-connect 3.7.1 (2014-04-13)
+n.b. This repo is marked for deletion. I (Ali, circa 11/2017) do not believe it is in use, and the parts that we use have been pulled out into https://github.com/animoto/chemistrykit 
 
-[![Gem Version](https://badge.fury.io/rb/selenium-connect.png)](http://badge.fury.io/rb/selenium-connect) [![Build Status](https://travis-ci.org/arrgyle/selenium-connect.png?branch=develop)](https://travis-ci.org/arrgyle/selenium-connect) [![Code Climate](https://codeclimate.com/github/arrgyle/selenium-connect.png)](https://codeclimate.com/github/arrgyle/selenium-connect) [![Coverage Status](https://coveralls.io/repos/arrgyle/selenium-connect/badge.png?branch=develop)](https://coveralls.io/r/arrgyle/selenium-connect?branch=develop)
+________________
+
+#selenium-connect 3.7.1 (2014-04-13)
 
 A stupid simple way to run your Selenium tests on your computer, against a Selenium Grid, or in the cloud (e.g. SauceLabs). For a rocking implementation of this library, checkout [ChemistryKit](https://github.com/arrgyle/chemistrykit)! For more usage examples check out our [Friends](#friends) section!
 
